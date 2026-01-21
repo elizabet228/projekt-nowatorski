@@ -3,6 +3,11 @@ name: Reusable Docker Build
 on:
   workflow_call:
 
+permissions:
+  contents: read
+  packages: write
+
+
 jobs:
   docker:
     runs-on: ubuntu-latest
