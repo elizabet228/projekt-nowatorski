@@ -21,5 +21,12 @@ jobs:
           cd app
           pip install -r requirements.txt
 
-      - name: Basic test
-        run: python -c "print('PR pipeline OK')"
+      - name: Run tests
+        run: |
+          cd app
+          pytest
+
+      - name: Run lint
+        run: |
+          cd app
+          flake8 .
