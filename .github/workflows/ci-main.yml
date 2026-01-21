@@ -1,0 +1,10 @@
+name: Main Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    uses: ./.github/workflows/reusable-docker.yml
+    secrets: inherit

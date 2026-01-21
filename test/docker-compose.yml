@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  app:
+    build: ../app
+    container_name: projekt-nowatorski-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    container_name: projekt-nowatorski-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
