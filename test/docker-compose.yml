@@ -1,18 +1,26 @@
-version: "3.9"
-
 services:
   app:
     build: ../app
-    container_name: projekt-nowatorski-app
-    ports:
-      - "5000:5000"
     depends_on:
       - db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: appdb
+      DB_HOST: db
+    ports:
+      - "5000:5000"
+    container_name: projekt-nowatorski-app
 
   db:
     image: postgres:16
-    container_name: projekt-nowatorski-db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: appdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    container_name: projekt-nowatorski-db
+
+volumes:
+  pgdata:

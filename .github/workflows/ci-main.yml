@@ -9,6 +9,6 @@ permissions:
   packages: write
 
 jobs:
-  build:
+  build-and-push:
     uses: ./.github/workflows/reusable-docker.yml
     secrets: inherit
